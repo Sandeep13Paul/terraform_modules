@@ -1,0 +1,20 @@
+version: 3
+repos:
+  - id: https://github.com/Sandeep13Paul/terraform-tutorial
+    workflow: custom_workflow
+    allowed_overrides: [workflow]
+    allow_custom_workflows: true
+    autoplan:
+      enabled: true
+      when_modified: ["*.tf", "*.tfvars"]
+
+workflows:
+  default:
+    plan:
+      steps:
+        - run: rm -rf .terraform .terraform.lock.hcl
+        - run: |
+            terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2"  -var="project_selector=project1" -out=tfplan
+    apply:
+      steps:
+        - run: terraform apply tfplan
