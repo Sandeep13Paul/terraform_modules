@@ -7,3 +7,5 @@ enable_vpc    = false
 enable_storage = false
 
 service_count = 1
+
+project_selector = "project1" # project1 or project2
