@@ -1,6 +1,6 @@
 resource "google_compute_instance" "vm-sandeep-tf" {
   name           = "vm-sandeep-${random_id.suffix.hex}"
-  machine_type   = "n1-medium"
+  machine_type   = "n1-standard-1"
   zone           = var.zone
   can_ip_forward = false
   tags           = ["sandeep-tf"]
