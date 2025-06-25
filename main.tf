@@ -48,6 +48,20 @@ module "vm_instance" {
   }
 }
 
+module "service_account" {
+  source = "./modules/service_accounts"
+  count  = var.enable_vm ? var.service_count : 0
+
+  project_id = local.project_id
+  region     = var.region
+  zone       = var.zone
+  GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
+
+  providers = {
+    google = google.project
+  }
+}
+
 locals {
   GOOGLE_CREDENTIALS = var.project_selector == "project1" ? var.GOOGLE_CREDENTIALS1 : var.GOOGLE_CREDENTIALS2
   project_id = var.project_selector == "project1" ? var.project_id_1 : var.project_id_2

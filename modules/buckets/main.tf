@@ -4,3 +4,7 @@
 #   region      = var.region
 #   zone        = var.zone
 # }
+
+provider "google" {
+  alias = "project"
+}
