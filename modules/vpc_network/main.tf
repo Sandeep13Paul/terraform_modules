@@ -7,6 +7,6 @@ terraform {
   }
 }
 
-# provider "google" {
-#   alias = "project"
-# }
+provider "google" {
+  alias = "project"
+}
