@@ -50,11 +50,6 @@ variable "enable_service_account" {
   default = false
 }
 
-variable "service_count" {
-  description = "Number of Services to create."
-  type        = number 
-}
-
 variable "project_selector" {
   description = "Choose which GCP project to use: project1 or project2"
   type        = string
