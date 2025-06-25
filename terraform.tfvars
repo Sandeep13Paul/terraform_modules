@@ -17,36 +17,36 @@ services = {
   vm_instance = {
     enabled = true
     instances = [
-      {
-        name         = "vm-sandeep-1"
-        machine_type = "e2-medium"
-        image        = "debian-cloud/debian-11"
-        zone         = "asia-southeast1-b"
-      },
-      {
-        name         = "vm-sandeep-2"
-        machine_type = "e2-small"
-        image        = "debian-cloud/debian-11"
-        zone         = "asia-southeast1-a"
-      }
+    #   {
+    #     name         = "vm-sandeep-1"
+    #     machine_type = "e2-medium"
+    #     image        = "debian-cloud/debian-11"
+    #     zone         = "asia-southeast1-b"
+    #   },
+    #   {
+    #     name         = "vm-sandeep-2"
+    #     machine_type = "e2-small"
+    #     image        = "debian-cloud/debian-11"
+    #     zone         = "asia-southeast1-a"
+    #   }
     ]
   }
 
   bucket = {
     enabled = true
     buckets = [
-      {
-        name          = "sandeep-bucket-1"
-        location      = "ASIA"
-        force_destroy = true
-        storage_class = "STANDARD"
-      },
-      {
-        name          = "sandeep-bucket-2"
-        location      = "US"
-        force_destroy = false
-        storage_class = "NEARLINE"
-      }
+    #   {
+    #     name          = "sandeep-bucket-1"
+    #     location      = "ASIA"
+    #     force_destroy = true
+    #     storage_class = "STANDARD"
+    #   },
+    #   {
+    #     name          = "sandeep-bucket-2"
+    #     location      = "US"
+    #     force_destroy = false
+    #     storage_class = "NEARLINE"
+    #   }
     ]
   }
 
