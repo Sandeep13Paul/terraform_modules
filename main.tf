@@ -20,9 +20,9 @@ provider "google" {
 #   }
 # }
 
-locals {
-  vpc_networks = var.services["vpc_network"].enabled ? var.services["vpc_network"].networks : []
-}
+# locals {
+#   vpc_networks = var.services["vpc_network"].enabled ? var.services["vpc_network"].networks : []
+# }
 
 # module "vpc_network" {
 #   source = "./modules/vpc_network"
