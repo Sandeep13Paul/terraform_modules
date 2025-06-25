@@ -4,10 +4,10 @@ region = "us-central1"
 zone = "us-central1-a"
 
 enable_vm     = false
-enable_vpc    = false
-enable_storage = true
-enable_service_account = true
+enable_vpc    = true
+enable_storage = false
+enable_service_account = false
 
-service_count = 2
+service_count = 3
 
 project_selector = "project1" # project1 or project2
