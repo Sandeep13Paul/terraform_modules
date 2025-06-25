@@ -12,7 +12,7 @@ resource "google_compute_instance" "vm-sandeep-tf" {
   }
 
   network_interface {
-    network    = "allow-atlantis"
+    network    = "default"
   }
 }
 
