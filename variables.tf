@@ -56,5 +56,5 @@ variable "project_selector" {
 }
 
 variable "services" {
-  type = map(any)
+  type = any
 }

@@ -114,19 +114,19 @@ module "vm_instance" {
   }
 }
 
-module "service_accounts" {
-  source = "./modules/service_accounts"
-  count  = var.enable_service_account ? var.service_count : 0
+# module "service_accounts" {
+#   source = "./modules/service_accounts"
+#   count  = var.enable_service_account ? var.service_count : 0
 
-  project_id = local.project_id
-  region     = var.region
-  zone       = var.zone
-  GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
+#   project_id = local.project_id
+#   region     = var.region
+#   zone       = var.zone
+#   GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
 
-  providers = {
-    google = google.project
-  }
-}
+#   providers = {
+#     google = google.project
+#   }
+# }
 
 locals {
   GOOGLE_CREDENTIALS = var.project_selector == "project1" ? var.GOOGLE_CREDENTIALS1 : var.GOOGLE_CREDENTIALS2
