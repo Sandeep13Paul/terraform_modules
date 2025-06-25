@@ -21,7 +21,7 @@ resource "google_storage_bucket" "bucket-sandeep" {
 
 resource "google_storage_bucket_object" "object-sandeep" {
     name = "iphone_logo"
-    bucket = google_storage_bucket.bucket-sandeep.name
+    bucket = google_storage_bucket.bucket-sandeep[count.index].name
     source = "./modules/buckets/p2.jpg"
 }
 
