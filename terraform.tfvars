@@ -3,7 +3,7 @@ project_id_1 = "sunlit-cab-463104-m6"
 region = "us-central1"
 zone = "us-central1-a"
 
-enable_vm     = false
+enable_vm     = true
 enable_vpc    = false
 enable_storage = false
 
