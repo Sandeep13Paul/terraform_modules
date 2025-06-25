@@ -10,4 +10,4 @@ enable_service_account = true
 
 service_count = 2
 
-project_selector = "project2" # project1 or project2
+project_selector = "project1" # project1 or project2
