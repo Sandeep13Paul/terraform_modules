@@ -5,8 +5,9 @@ zone = "us-central1-a"
 
 enable_vm     = false
 enable_vpc    = false
-enable_storage = false
+enable_storage = true
+enable_service_account = true
 
-service_count = 1
+service_count = 2
 
 project_selector = "project2" # project1 or project2

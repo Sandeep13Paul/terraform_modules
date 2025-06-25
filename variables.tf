@@ -45,6 +45,11 @@ variable "enable_storage" {
   default = false
 }
 
+variable "enable_service_account" {
+  type    = bool
+  default = false
+}
+
 variable "service_count" {
   description = "Number of Services to create."
   type        = number 

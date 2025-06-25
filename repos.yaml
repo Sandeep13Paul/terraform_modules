@@ -9,12 +9,21 @@ repos:
       when_modified: ["*.tf", "*.tfvars"]
 
 workflows:
-  default:
+  custom_workflow:
     plan:
       steps:
         - run: rm -rf .terraform .terraform.lock.hcl
         - run: |
-            terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2"  -var="project_selector=project2" -out=tfplan
+            terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -out=tfplan
+    apply:
+      steps:
+        - run: terraform apply tfplan
+  destroy_workflow:
+    plan:
+      steps:
+        - run: rm -rf .terraform .terraform.lock.hcl
+        - run: |
+            terraform plan -destroy -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -out=tfplan
     apply:
       steps:
         - run: terraform apply tfplan
