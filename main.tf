@@ -6,25 +6,25 @@
 #   zone        = var.zone
 # }
 
-module "vpc_network" {
-  source = "./modules/vpc_network"
-#   count  = var.enable_vpc ? var.service_count : 0
+# module "vpc_network" {
+#   source = "./modules/vpc_network"
+# #   count  = var.enable_vpc ? var.service_count : 0
 
-  project_id = local.project_id
-  region     = var.region
-  zone       = var.zone
-  GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
-}
+#   project_id = local.project_id
+#   region     = var.region
+#   zone       = var.zone
+#   GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
+# }
 
-module "buckets" {
-  source = "./modules/buckets"
-#   count  = var.enable_storage ? var.service_count : 0
+# module "buckets" {
+#   source = "./modules/buckets"
+# #   count  = var.enable_storage ? var.service_count : 0
 
-  project_id = local.project_id
-  region     = var.region
-  zone       = var.zone
-  GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
-}
+#   project_id = local.project_id
+#   region     = var.region
+#   zone       = var.zone
+#   GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
+# }
 
 module "vm_instance" {
   source = "./modules/vm_instance"
