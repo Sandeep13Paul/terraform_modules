@@ -24,25 +24,25 @@ locals {
   vpc_networks = var.services["vpc_network"].enabled ? var.services["vpc_network"].networks : []
 }
 
-module "vpc_network" {
-  source = "./modules/vpc_network"
-  # for_each = { for idx, network in local.vpc_networks : idx => network }
+# module "vpc_network" {
+#   source = "./modules/vpc_network"
+#   # for_each = { for idx, network in local.vpc_networks : idx => network }
 
-  # name          = each.value.name
-  # auto_create_subnetworks      = each.value.auto_create_subnetworks
-  # description = each.value.description
+#   # name          = each.value.name
+#   # auto_create_subnetworks      = each.value.auto_create_subnetworks
+#   # description = each.value.description
 
-  networks = var.services["vpc_network"].enabled ? var.services["vpc_network"].networks : []
+#   networks = var.services["vpc_network"].enabled ? var.services["vpc_network"].networks : []
 
-  project_id = local.project_id
-  region     = var.region
-  zone       = var.zone
-  GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
+#   project_id = local.project_id
+#   region     = var.region
+#   zone       = var.zone
+#   GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
 
-  providers = {
-    google = google.project
-  }
-}
+#   providers = {
+#     google = google.project
+#   }
+# }
 
 # module "buckets" {
 #   source = "./modules/buckets"
