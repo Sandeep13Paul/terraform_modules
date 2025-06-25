@@ -42,7 +42,7 @@ provider "google" {
 #   providers = {
 #     google = google.project
 #   }
-}
+# }
 
 # module "buckets" {
 #   source = "./modules/buckets"
