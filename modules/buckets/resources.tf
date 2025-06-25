@@ -1,7 +1,7 @@
 resource "google_storage_bucket" "bucket-sandeep" {
-  name          = "bucket-${random_id.suffix.hex}"
-  location      = var.region
-  storage_class = "NEARLINE"
+  name          = var.name
+  location      = var.location
+  storage_class = var.storage_class
   labels = {
     "dep" = "compliance"
   }
@@ -23,6 +23,6 @@ resource "google_storage_bucket_object" "object-sandeep" {
     source = "./modules/buckets/p2.jpg"
 }
 
-resource "random_id" "suffix" {
-  byte_length = 4
-}
+# resource "random_id" "suffix" {
+#   byte_length = 4
+# }

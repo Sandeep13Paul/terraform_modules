@@ -1,11 +1,13 @@
 resource "google_compute_network" "auto-vpc-tf-unique-names" {
-  name                    = "auto-vpc-${random_id.suffix.hex}"
-  auto_create_subnetworks = true
+  name                    = var.name
+  auto_create_subnetworks = var.auto_create_subnetworks
+  description             = var.description
 }
 
 resource "google_compute_network" "custom-vpc-tf-uniques" {
-  name                    = "custom-vpc-${random_id.suffix.hex}"
-  auto_create_subnetworks = false
+  name                    = var.name
+  description             = var.description
+  auto_create_subnetworks = var.auto_create_subnetworks
 }
 
 resource "google_compute_subnetwork" "subnet-custom-vpc-tfv" {

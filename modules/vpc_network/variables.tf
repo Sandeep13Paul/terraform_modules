@@ -18,3 +18,15 @@ variable "GOOGLE_CREDENTIALS" {
   type        = string
   sensitive   = true
 }
+
+variable "name" {
+    type = string
+}
+
+variable "description" {
+    type = string
+}
+
+variable "auto_create_subnetworks" {
+    type = bool
+}

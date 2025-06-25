@@ -1,12 +1,12 @@
 resource "google_compute_instance" "vm-sandeep-tf" {
-  name           = "vm-sandeep-${random_id.suffix.hex}"
-  machine_type   = "n1-standard-1"
+  name           = var.name
+  machine_type   = var.machine_type
   zone           = var.zone
   can_ip_forward = false
   tags           = ["sandeep-tf"]
   boot_disk {
     initialize_params {
-      image = "rocky-linux-cloud/rocky-linux-9"
+      image = var.image
       size  = 20
     }
   }
@@ -16,6 +16,6 @@ resource "google_compute_instance" "vm-sandeep-tf" {
   }
 }
 
-resource "random_id" "suffix" {
-  byte_length = 4
-}
+# resource "random_id" "suffix" {
+#   byte_length = 4
+# }

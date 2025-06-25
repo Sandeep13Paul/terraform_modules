@@ -59,3 +59,39 @@ variable "project_selector" {
   description = "Choose which GCP project to use: project1 or project2"
   type        = string
 }
+
+variable "services" {
+  type = map(any)
+}
+
+variable "name" {
+    type = string
+}
+
+variable "machine_type" {
+    type = string
+}
+
+variable "image" {
+    type = string
+}
+
+variable "location" {
+    type = string
+}
+
+variable "force_destroy" {
+    type = bool
+}
+
+variable "auto_create_subnetworks" {
+    type = bool
+}
+
+variable "description" {
+    type = string
+}
+
+variable "storage_class" {
+    type = string
+}
