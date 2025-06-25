@@ -8,7 +8,7 @@ provider "google" {
 
 module "vpc_network" {
   source = "./modules/vpc_network"
-  count  = var.enable_vpc ? 1 : 0
+  count  = var.enable_vpc ? var.service_count : 0
 
   project_id = local.project_id
   region     = var.region
@@ -22,7 +22,7 @@ module "vpc_network" {
 
 module "buckets" {
   source = "./modules/buckets"
-  count  = var.enable_storage ? 1 : 0
+  count  = var.enable_storage ? var.service_count : 0
 
   project_id = local.project_id
   region     = var.region
@@ -36,7 +36,7 @@ module "buckets" {
 
 module "vm_instance" {
   source = "./modules/vm_instance"
-  count  = var.enable_vm ? 1 : 0
+  count  = var.enable_vm ? var.service_count : 0
 
   project_id = local.project_id
   region     = var.region

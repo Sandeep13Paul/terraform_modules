@@ -3,10 +3,10 @@ project_id_1 = "sunlit-cab-463104-m6"
 region = "us-central1"
 zone = "us-central1-a"
 
-enable_vm     = true
+enable_vm     = false
 enable_vpc    = false
-enable_storage = false
+enable_storage = true
 
-service_count = 1
+service_count = 2
 
-project_selector = "project2" # project1 or project2
+project_selector = "project1" # project1 or project2
