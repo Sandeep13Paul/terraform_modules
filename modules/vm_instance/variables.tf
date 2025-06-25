@@ -19,14 +19,23 @@ variable "GOOGLE_CREDENTIALS" {
   sensitive   = true
 }
 
-variable "name" {
-    type = string
-}
+# variable "name" {
+#     type = string
+# }
 
-variable "machine_type" {
-    type = string
-}
+# variable "machine_type" {
+#     type = string
+# }
 
-variable "image" {
-    type = string
+# variable "image" {
+#     type = string
+# }
+
+variable "instances" {
+  type = list(object({
+    name         = string
+    machine_type = string
+    image        = string
+    zone         = string
+  }))
 }

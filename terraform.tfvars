@@ -6,7 +6,7 @@ zone = "us-central1-a"
 # enable_vm     = false
 # enable_vpc    = true
 # enable_storage = false
-# enable_service_account = false
+enable_service_account = false
 
 # service_count = 3
 
@@ -63,12 +63,6 @@ services = {
             region             = "asia-southeast1"
             ip_cidr_range      = "10.10.0.0/24"
             private_ip_google_access = true
-            },
-            {
-            name               = "sandeep-subnet-2"
-            region             = "asia-southeast2"
-            ip_cidr_range      = "10.20.0.0/24"
-            private_ip_google_access = false
             }
           ]
         },

@@ -1,7 +1,9 @@
 resource "google_storage_bucket" "bucket-sandeep" {
-  name          = var.name
-  location      = var.location
-  storage_class = var.storage_class
+  count         = length(var.buckets)
+  name          = var.buckets[count.index].name
+  location      = var.buckets[count.index].location
+  force_destroy = var.buckets[count.index].force_destroy
+  storage_class = var.buckets[count.index].storage_class
   labels = {
     "dep" = "compliance"
   }

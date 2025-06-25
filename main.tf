@@ -62,12 +62,7 @@ locals {
 
 module "buckets" {
   source   = "./modules/buckets"
-  for_each = { for idx, bucket in local.buckets : idx => bucket }
-
-  name          = each.value.name
-  location      = each.value.location
-  force_destroy = each.value.force_destroy
-  storage_class = each.value.storage_class
+  buckets = var.services.bucket.enabled ? var.services.bucket.buckets : []
 
   project_id         = local.project_id
   GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
@@ -99,15 +94,18 @@ locals {
 
 module "vm_instance" {
   source   = "./modules/vm_instance"
-  for_each = { for idx, inst in local.vm_instances : idx => inst }
+  # for_each = { for idx, inst in local.vm_instances : idx => inst }
 
-  name         = each.value.name
-  machine_type = each.value.machine_type
-  image        = each.value.image
-  zone         = each.value.zone
+  # name         = each.value.name
+  # machine_type = each.value.machine_type
+  # image        = each.value.image
+  # zone         = each.value.zone
+
+  instances = var.services["vm_instance"].enabled ? var.services["vm_instance"].instances : []
 
   project_id         = local.project_id
   region             = var.region
+  zone = var.zone
   GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
   providers = {
     google = google.project

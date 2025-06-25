@@ -1,12 +1,13 @@
 resource "google_compute_instance" "vm-sandeep-tf" {
-  name           = var.name
-  machine_type   = var.machine_type
-  zone           = var.zone
+  count        = length(var.instances)
+  name         = var.instances[count.index].name
+  machine_type = var.instances[count.index].machine_type
+  zone         = var.instances[count.index].zone
   can_ip_forward = false
   tags           = ["sandeep-tf"]
   boot_disk {
     initialize_params {
-      image = var.image
+      image = var.instances[count.index].image
       size  = 20
     }
   }
