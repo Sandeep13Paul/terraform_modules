@@ -48,9 +48,9 @@ module "vm_instance" {
   }
 }
 
-module "service_account" {
+module "service_accounts" {
   source = "./modules/service_accounts"
-  count  = var.enable_vm ? var.service_count : 0
+  count  = var.enable_service_account ? var.service_count : 0
 
   project_id = local.project_id
   region     = var.region
