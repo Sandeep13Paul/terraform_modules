@@ -19,16 +19,31 @@ variable "GOOGLE_CREDENTIALS" {
   sensitive   = true
 }
 
+# variable "networks" {
+#   type = list(object({
+#     name                    = string
+#     auto_create_subnetworks = bool
+#     description             = string
+#     subnets = list(object({
+#       name                     = string
+#       region                   = string
+#       ip_cidr_range            = string
+#       private_ip_google_access = bool
+#     }))
+#   }))
+# }
+
 variable "networks" {
   type = list(object({
     name                    = string
     auto_create_subnetworks = bool
     description             = string
-    subnets = list(object({
-      name                     = string
-      region                   = string
-      ip_cidr_range            = string
+    subnets = optional(list(object({
+      name                    = string
+      region                  = string
+      ip_cidr_range           = string
       private_ip_google_access = bool
-    }))
+    })))
   }))
+  default = []
 }

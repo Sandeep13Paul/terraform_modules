@@ -26,4 +26,6 @@ variable "service_accounts" {
     description  = string
     project_id = string
   }))
+
+  default = []
 }
