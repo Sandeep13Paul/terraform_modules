@@ -74,8 +74,8 @@ services = {
       },
       {
         account_id        = "sandeep-service-account-2"
-        display_name = "Sandeep Service Account 1"
-        description = "Service account for Sandeep's project 2"
+        display_name = "Sandeep Service Account 2"
+        description = "Service account for Sandeep's project 1"
         project_id = "sunlit-cab-463104-m6"
       }
     ]
