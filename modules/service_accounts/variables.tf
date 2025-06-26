@@ -23,7 +23,7 @@ variable "service_accounts" {
   type = list(object({
     account_id   = string
     display_name = string
-    description  = optional(string)
+    description  = string
     project_id = string
   }))
 }
