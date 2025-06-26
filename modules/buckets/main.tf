@@ -4,16 +4,3 @@ provider "google" {
   region      = var.region
   zone        = var.zone
 }
-
-# provider "google" {
-#   alias = "project"
-# }
-
-# terraform {
-#   required_providers {
-#     google = {
-#       source = "hashicorp/google"
-#       configuration_aliases = [google.project]
-#     }
-#   }
-# }

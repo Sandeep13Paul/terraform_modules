@@ -18,3 +18,12 @@ variable "GOOGLE_CREDENTIALS" {
   type        = string
   sensitive   = true
 }
+
+variable "service_accounts" {
+  type = list(object({
+    account_id   = string
+    display_name = string
+    description  = optional(string)
+    project_id = string
+  }))
+}

@@ -16,7 +16,3 @@ resource "google_compute_instance" "vm-sandeep-tf" {
     network    = "default"
   }
 }
-
-# resource "random_id" "suffix" {
-#   byte_length = 4
-# }
