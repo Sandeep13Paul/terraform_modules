@@ -38,12 +38,12 @@ variable "networks" {
     name                    = string
     auto_create_subnetworks = bool
     description             = string
-    subnets = optional(list(object({
+    subnets = list(object({
       name                    = string
       region                  = string
       ip_cidr_range           = string
       private_ip_google_access = bool
-    })))
+    }))
   }))
   default = []
 }
