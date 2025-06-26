@@ -36,7 +36,7 @@ services = {
     enabled = true
     buckets = [
       {
-        name          = "sandeep-bucket-4"
+        name          = "sandeep-bucket-3"
         location      = "ASIA"
         force_destroy = true
         storage_class = "STANDARD"
