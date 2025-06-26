@@ -17,18 +17,18 @@ services = {
   vm_instance = {
     enabled = true
     instances = [
-      {
-        name         = "vm-sandeep-4"
-        machine_type = "e2-medium"
-        image        = "debian-cloud/debian-11"
-        zone         = "asia-southeast1-b"
-      },
-      {
-        name         = "vm-sandeep-5"
-        machine_type = "e2-small"
-        image        = "debian-cloud/debian-11"
-        zone         = "asia-southeast1-a"
-      }
+      # {
+      #   name         = "vm-sandeep-4"
+      #   machine_type = "e2-medium"
+      #   image        = "debian-cloud/debian-11"
+      #   zone         = "asia-southeast1-b"
+      # },
+      # {
+      #   name         = "vm-sandeep-5"
+      #   machine_type = "e2-small"
+      #   image        = "debian-cloud/debian-11"
+      #   zone         = "asia-southeast1-a"
+      # }
     ]
   }
 
