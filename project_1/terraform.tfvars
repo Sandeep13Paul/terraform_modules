@@ -6,13 +6,13 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vm-sandeep-6"
+        name         = "vm-sandeep-1"
         machine_type = "e2-medium"
         image        = "debian-cloud/debian-11"
         zone         = "asia-southeast1-b"
       },
       {
-        name         = "vm-sandeep-7"
+        name         = "vm-sandeep-2"
         machine_type = "e2-small"
         image        = "debian-cloud/debian-11"
         zone         = "asia-southeast1-a"
@@ -24,13 +24,13 @@ services = {
     enabled = true
     buckets = [
       {
-        name          = "sandeep-bucket-6"
+        name          = "sandeep-bucket-1"
         location      = "ASIA"
         force_destroy = true
         storage_class = "STANDARD"
       },
       {
-        name          = "sandeep-bucket-7"
+        name          = "sandeep-bucket-2"
         location      = "US"
         force_destroy = false
         storage_class = "NEARLINE"
@@ -70,13 +70,13 @@ services = {
         account_id        = "sandeep-service-account-1"
         display_name = "Sandeep Service Account 1"
         description = "Service account for Sandeep's project 1"
-        project_id = "my-second-project-463910"
+        project_id = "sunlit-cab-463104-m6"
       },
       {
         account_id        = "sandeep-service-account-2"
-        display_name = "Sandeep Service Account 2"
+        display_name = "Sandeep Service Account 1"
         description = "Service account for Sandeep's project 2"
-        project_id = "my-second-project-463910"
+        project_id = "sunlit-cab-463104-m6"
       }
     ]
   }
