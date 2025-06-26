@@ -1,10 +1,10 @@
-provider "google" {
-  alias = "project"
-  credentials = base64decode(local.GOOGLE_CREDENTIALS)
-  project     = local.project_id
-  region      = var.region
-  zone        = var.zone
-}
+# provider "google" {
+#   alias = "project"
+#   credentials = base64decode(local.GOOGLE_CREDENTIALS)
+#   project     = local.project_id
+#   region      = var.region
+#   zone        = var.zone
+# }
 
 # module "vpc_network" {
 #   source = "./modules/vpc_network"
@@ -71,9 +71,9 @@ module "buckets" {
   region     = var.region
   zone       = var.zone
 
-  providers = {
-    google = google.project
-  }
+  # providers = {
+  #   google = google.project
+  # }
 }
 
 # module "vm_instance" {
@@ -109,9 +109,9 @@ module "vm_instance" {
   region             = var.region
   zone = var.zone
   GOOGLE_CREDENTIALS = local.GOOGLE_CREDENTIALS
-  providers = {
-    google = google.project
-  }
+  # providers = {
+  #   google = google.project
+  # }
 }
 
 # module "service_accounts" {
