@@ -36,13 +36,13 @@ services = {
     enabled = true
     buckets = [
       {
-        name          = "sandeep-bucket-1"
+        name          = "sandeep-bucket-7"
         location      = "ASIA"
         force_destroy = true
         storage_class = "STANDARD"
       },
       {
-        name          = "sandeep-bucket-2"
+        name          = "sandeep-bucket-8"
         location      = "US"
         force_destroy = false
         storage_class = "NEARLINE"
