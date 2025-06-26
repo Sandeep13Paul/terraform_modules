@@ -63,7 +63,7 @@ locals {
 }
 
 module "buckets" {
-  source   = "./modules/buckets"
+  source   = "../modules/buckets"
   buckets = var.services.bucket.enabled ? var.services.bucket.buckets : []
 
   project_id         = local.project_id
@@ -95,7 +95,7 @@ locals {
 }
 
 module "vm_instance" {
-  source   = "./modules/vm_instance"
+  source   = "../modules/vm_instance"
   # for_each = { for idx, inst in local.vm_instances : idx => inst }
 
   # name         = each.value.name

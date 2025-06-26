@@ -7,6 +7,9 @@ repos:
     autoplan:
       enabled: true
       when_modified: ["*.tf", "*.tfvars"]
+    dirs:
+      - project_1
+      - project_2
 
 workflows:
   project_1_workflow:
