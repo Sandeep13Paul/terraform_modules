@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
-    bucket = "tfstate-sandeep-projects"
-    prefix = "project_1/env1"
+    bucket = "tfstate-sandeep-project2"
+    prefix = "project_2/env2"
   }
 }
 
