@@ -1,7 +1,7 @@
 module "vpc_network" {
   source = "../modules/vpc_network"
 
-  networks = var.services.vpc_network.enabled ? var.services.vpc_network.networks : []
+  networks = var.services["vpc_network"].enabled ? var.services["vpc_network"].networks : []
 
   project_id = var.project_id
   region     = var.region
@@ -11,7 +11,7 @@ module "vpc_network" {
 
 module "buckets" {
   source   = "../modules/buckets"
-  buckets = var.services.bucket.enabled ? var.services.bucket.buckets : []
+  buckets = var.services["bucket"].enabled ? var.services["bucket"].buckets : []
 
   project_id         = var.project_id
   GOOGLE_CREDENTIALS = var.GOOGLE_CREDENTIALS2
@@ -31,7 +31,7 @@ module "vm_instance" {
 
 module "service_accounts" {
   source = "../modules/service_accounts"
-  service_accounts = var.services.service_account.enabled ? var.services.service_account.service_accounts : []
+  service_accounts = var.services["service_account"].enabled ? var.services["service_account"].service_accounts : []
 
   project_id = var.project_id
   region     = var.region
