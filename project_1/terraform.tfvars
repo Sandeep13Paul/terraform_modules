@@ -18,13 +18,13 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vm-sandeep-3"
+        name         = "vm-sandeep-4"
         machine_type = "e2-medium"
         image        = "debian-cloud/debian-11"
         zone         = "asia-southeast1-b"
       },
       {
-        name         = "vm-sandeep-2"
+        name         = "vm-sandeep-5"
         machine_type = "e2-small"
         image        = "debian-cloud/debian-11"
         zone         = "asia-southeast1-a"
@@ -36,13 +36,13 @@ services = {
     enabled = true
     buckets = [
       {
-        name          = "sandeep-bucket-7"
+        name          = "sandeep-bucket-4"
         location      = "ASIA"
         force_destroy = true
         storage_class = "STANDARD"
       },
       {
-        name          = "sandeep-bucket-8"
+        name          = "sandeep-bucket-5"
         location      = "US"
         force_destroy = false
         storage_class = "NEARLINE"
