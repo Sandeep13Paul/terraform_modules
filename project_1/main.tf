@@ -1,6 +1,5 @@
 module "vpc_network" {
   source = "../modules/vpc_network"
-  count = var.services["service_account"].enabled ? 1 : 0
   networks = var.services.vpc_network.networks
 
   project_id = var.project_id
@@ -31,7 +30,6 @@ module "vm_instance" {
 
 module "service_accounts" {
   source = "../modules/service_accounts"
-  count = var.services["service_account"].enabled ? 1 : 0
   service_accounts = var.services["service_account"].service_accounts
 
   project_id = var.project_id
