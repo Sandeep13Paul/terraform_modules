@@ -1,9 +1,9 @@
 module "vpc_network" {
-  source = "./modules/vpc_network"
+  source = "../modules/vpc_network"
 
   networks = var.services.vpc_network.enabled ? var.services.vpc_network.networks : []
 
-  project_id = local.project_id
+  project_id = var.project_id
   region     = var.region
   zone       = var.zone
   GOOGLE_CREDENTIALS = var.GOOGLE_CREDENTIALS1
@@ -30,10 +30,10 @@ module "vm_instance" {
 }
 
 module "service_accounts" {
-  source = "./modules/service_accounts"
+  source = "../modules/service_accounts"
   service_accounts = var.services.service_account.enabled ? var.services.service_account.service_accounts : []
 
-  project_id = local.project_id
+  project_id = var.project_id
   region     = var.region
   zone       = var.zone
   GOOGLE_CREDENTIALS = var.GOOGLE_CREDENTIALS1
