@@ -1,15 +1,16 @@
 version: 3
 repos:
   - id: https://github.com/Sandeep13Paul/terraform-tutorial
-    workflow: project_1_workflow
     allowed_overrides: [workflow]
     allow_custom_workflows: true
     autoplan:
       enabled: true
       when_modified: ["*.tf", "*.tfvars"]
-    dirs:
-      - project_1
-      - project_2
+    workflows:
+      - dir: project_1
+        workflow: project_1_workflow
+      - dir: project_2
+        workflow: project_2_workflow
 
 workflows:
   project_1_workflow:
