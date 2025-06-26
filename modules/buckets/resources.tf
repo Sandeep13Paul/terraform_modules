@@ -1,7 +1,9 @@
 resource "google_storage_bucket" "bucket-sandeep" {
-  name          = "bucket-${random_id.suffix.hex}"
-  location      = var.region
-  storage_class = "NEARLINE"
+  count         = length(var.buckets)
+  name          = var.buckets[count.index].name
+  location      = var.buckets[count.index].location
+  force_destroy = var.buckets[count.index].force_destroy
+  storage_class = var.buckets[count.index].storage_class
   labels = {
     "dep" = "compliance"
   }
@@ -17,12 +19,12 @@ resource "google_storage_bucket" "bucket-sandeep" {
   }
 }
 
-resource "google_storage_bucket_object" "object-sandeep" {
-    name = "iphone_logo"
-    bucket = google_storage_bucket.bucket-sandeep.name
-    source = "./modules/buckets/p2.jpg"
-}
+# resource "google_storage_bucket_object" "object-sandeep" {
+#     name = "iphone_logo"
+#     bucket = google_storage_bucket.bucket-sandeep[count.index].name
+#     source = "./modules/buckets/p2.jpg"
+# }
 
-resource "random_id" "suffix" {
-  byte_length = 4
-}
+# resource "random_id" "suffix" {
+#   byte_length = 4
+# }

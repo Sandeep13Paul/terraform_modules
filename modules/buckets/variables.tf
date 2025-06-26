@@ -18,3 +18,28 @@ variable "GOOGLE_CREDENTIALS" {
   type        = string
   sensitive   = true
 }
+
+# variable "name" {
+#     type = string
+# }
+
+# variable "location" {
+#     type = string
+# }
+
+# variable "force_destroy" {
+#     type = bool
+# }
+
+# variable "storage_class" {
+#     type = string
+# }
+
+variable "buckets" {
+  type = list(object({
+    name          = string
+    location      = string
+    force_destroy = bool
+    storage_class = string
+  }))
+}

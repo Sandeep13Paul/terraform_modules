@@ -1,29 +1,78 @@
+# version: 3
+# repos:
+#   - id: https://github.com/Sandeep13Paul/terraform-tutorial
+#     allowed_overrides: [workflow]
+#     allow_custom_workflows: true
+#     autoplan:
+#       enabled: true
+#       when_modified: ["*.tf", "*.tfvars"]
+#     workflows:
+#       - dir: project_1
+#         workflow: project_1_workflow
+#       - dir: project_2
+#         workflow: project_2_workflow
+
+# workflows:
+#   project_1_workflow:
+#     plan:
+#       steps:
+#         - run: rm -rf .terraform .terraform.lock.hcl
+#         - run: |
+#             terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -var-file="project_1/terraform.tfvars" -out=tfplan
+#     apply:
+#       steps:
+#         - run: terraform apply -var-file="project_1/terraform.tfvars" tfplan
+#   project_2_workflow:
+#     plan:
+#       steps:
+#         - run: rm -rf .terraform .terraform.lock.hcl
+#         - run: |
+#             terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -var-file="project_2/terraform.tfvars" -out=tfplan
+#     apply:
+#       steps:
+#         - run: terraform apply -var-file="project_2/terraform.tfvars" tfplan
+
+
 version: 3
+
 repos:
   - id: https://github.com/Sandeep13Paul/terraform-tutorial
-    workflow: custom_workflow
     allowed_overrides: [workflow]
     allow_custom_workflows: true
     autoplan:
       enabled: true
       when_modified: ["*.tf", "*.tfvars"]
+    projects:
+      - dir: project_1
+        workflow: project_1_workflow
+      - dir: project_2
+        workflow: project_2_workflow
 
 workflows:
-  custom_workflow:
+  project_1_workflow:
     plan:
       steps:
         - run: rm -rf .terraform .terraform.lock.hcl
         - run: |
-            terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -out=tfplan
+            terraform plan \
+              -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" \
+              -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" \
+              -var-file="project_1/terraform.tfvars" \
+              -out=tfplan
     apply:
       steps:
-        - run: terraform apply tfplan
-  destroy_workflow:
+        - run: terraform apply -var-file="project_1/terraform.tfvars" tfplan
+
+  project_2_workflow:
     plan:
       steps:
         - run: rm -rf .terraform .terraform.lock.hcl
         - run: |
-            terraform plan -destroy -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -out=tfplan
+            terraform plan \
+              -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" \
+              -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" \
+              -var-file="project_2/terraform.tfvars" \
+              -out=tfplan
     apply:
       steps:
-        - run: terraform apply tfplan
+        - run: terraform apply -var-file="project_2/terraform.tfvars" tfplan
