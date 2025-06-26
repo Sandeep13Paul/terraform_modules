@@ -23,5 +23,5 @@ resource "google_storage_bucket_object" "object-sandeep" {
     count  = length(var.buckets)
     name = "iphone_logo"
     bucket = google_storage_bucket.bucket_sandeep[count.index].name
-    source = "./modules/buckets/p2.jpg"
+    source = "../modules/buckets/p2.jpg"
 }
