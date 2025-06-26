@@ -58,6 +58,7 @@ services = {
         name                    = "sandeep-vpc-2"
         auto_create_subnetworks = true
         description             = "Another VPC network for Sandeep's project"
+        subnets                 = []
       }
     ]
   }
@@ -66,16 +67,16 @@ services = {
     enabled = true
     service_accounts = [
       {
-        name        = "sandeep-service-account-1"
+        account_id        = "sandeep-service-account-1"
         display_name = "Sandeep Service Account 1"
         description = "Service account for Sandeep's project 1"
-        project = "my-second-project-463910"
+        project_id = "my-second-project-463910"
       },
       {
-        name        = "sandeep-service-account-2"
+        account_id        = "sandeep-service-account-2"
         display_name = "Sandeep Service Account 2"
         description = "Service account for Sandeep's project 2"
-        project = "my-second-project-463910"
+        project_id = "my-second-project-463910"
       }
     ]
   }
