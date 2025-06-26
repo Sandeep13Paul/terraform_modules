@@ -1,3 +1,10 @@
+terraform {
+  backend "gcs" {
+    bucket = "tfstate-sandeep-project1"
+    prefix = "project_1/env1"
+  }
+}
+
 module "vpc_network" {
   source = "../modules/vpc_network"
   networks = var.services.vpc_network.networks
