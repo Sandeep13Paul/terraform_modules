@@ -1,30 +1,18 @@
-project_id_2 = "my-second-project-463910" # my-second-project-463910  sunlit-cab-463104-m6
-project_id_1 = "sunlit-cab-463104-m6"
+project_id = "sunlit-cab-463104-m6"  # my-second-project-463910  sunlit-cab-463104-m6
 region = "us-central1"
 zone = "us-central1-a"
-
-# enable_vm     = false
-# enable_vpc    = true
-# enable_storage = false
-enable_service_account = false
-
-# service_count = 3
-
-project_selector = "project1" # project1 or project2
-
-
 services = {
   vm_instance = {
     enabled = true
     instances = [
       {
-        name         = "vm-sandeep-4"
+        name         = "vm-sandeep-1"
         machine_type = "e2-medium"
         image        = "debian-cloud/debian-11"
         zone         = "asia-southeast1-b"
       },
       {
-        name         = "vm-sandeep-5"
+        name         = "vm-sandeep-2"
         machine_type = "e2-small"
         image        = "debian-cloud/debian-11"
         zone         = "asia-southeast1-a"
@@ -36,13 +24,13 @@ services = {
     enabled = true
     buckets = [
       {
-        name          = "sandeep-bucket-4"
+        name          = "sandeep-bucket-1"
         location      = "ASIA"
         force_destroy = true
         storage_class = "STANDARD"
       },
       {
-        name          = "sandeep-bucket-5"
+        name          = "sandeep-bucket-2"
         location      = "US"
         force_destroy = false
         storage_class = "NEARLINE"
@@ -50,27 +38,47 @@ services = {
     ]
   }
 
-    vpc_network = {
-        enabled = false
-        networks = [
-        {
+  vpc_network = {
+    enabled = true
+    networks = [
+      {
         name                    = "sandeep-vpc-1"
         auto_create_subnetworks = false
         description             = "VPC network for Sandeep's project"
         subnets = [
-            {
+          {
             name               = "sandeep-subnet-1"
             region             = "asia-southeast1"
             ip_cidr_range      = "10.10.0.0/24"
             private_ip_google_access = true
-            }
-          ]
-        },
-        {
-            name                    = "sandeep-vpc-2"
-            auto_create_subnetworks = true
-            description             = "Another VPC network for Sandeep's project"
-        }
+          }
         ]
-    }
+      },
+      {
+        name                    = "sandeep-vpc-2"
+        auto_create_subnetworks = true
+        description             = "Another VPC network for Sandeep's project"
+        subnets                 = []
+      }
+    ]
+  }
+
+  service_account = {
+    enabled = true
+    service_accounts = [
+      {
+        account_id        = "sandeep-service-account-1"
+        display_name = "Sandeep Service Account 1"
+        description = "Service account for Sandeep's project 1"
+        project_id = "sunlit-cab-463104-m6"
+      },
+      {
+        account_id        = "sandeep-service-account-2"
+        display_name = "Sandeep Service Account 1"
+        description = "Service account for Sandeep's project 2"
+        project_id = "sunlit-cab-463104-m6"
+      }
+    ]
+  }
+
 }

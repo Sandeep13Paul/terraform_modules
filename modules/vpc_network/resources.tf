@@ -1,66 +1,32 @@
-# resource "google_compute_network" "auto-vpc-tf-unique-names" {
-#   name                    = var.name
-#   auto_create_subnetworks = var.auto_create_subnetworks
-#   description             = var.description
-# }
-
-# resource "google_compute_network" "custom-vpc-tf-uniques" {
-#   name                    = var.name
-#   description             = var.description
-#   auto_create_subnetworks = var.auto_create_subnetworks
-# }
-
-# resource "google_compute_subnetwork" "subnet-custom-vpc-tfv" {
-#   name    = "custom-subnet-${random_id.suffix.hex}"
-#   region  = var.region
-#   network = google_compute_network.custom-vpc-tf-uniques.id
-#   ip_cidr_range = "10.1.0.0/24"
-#   private_ip_google_access = true
-# }
-
-# resource "google_compute_firewall" "allow-icmp" {
-#     name = "icmp-rule-${random_id.suffix.hex}"
-#     network = google_compute_network.custom-vpc-tf-uniques.id
-#     direction = "INGRESS"
-#     priority = 1000
-#     source_ranges = ["14.97.94.230/32"]
-#     allow {
-#         protocol = "icmp"
-#     }
-
-# }
-
-# resource "random_id" "suffix" {
-#   byte_length = 4
-# }
-
 resource "google_compute_network" "vpc" {
-  for_each = { for net in var.networks : net.name => net }
+  count = length(var.networks)
 
-  name                     = each.value.name
-  auto_create_subnetworks = each.value.auto_create_subnetworks
-  description              = lookup(each.value, "description", null)
+  name                    = var.networks[count.index].name
+  auto_create_subnetworks = var.networks[count.index].auto_create_subnetworks
+  description             = var.networks[count.index].description
 }
 
-resource "google_compute_subnetwork" "subnets" {
-  for_each = {
-    for net in var.networks :
-    net.name => net.subnets != null ? [
-      for s in net.subnets : {
-        name                     = s.name
-        region                   = s.region
-        ip_cidr_range            = s.ip_cidr_range
-        private_ip_google_access = s.private_ip_google_access
-        network_name             = net.name
+locals {
+  subnets = flatten([
+    for i, vpc in var.networks : [
+      for subnet in vpc.subnets : {
+        vpc_index  = i
+        vpc_name   = vpc.name
+        name       = subnet.name
+        region     = subnet.region
+        cidr       = subnet.ip_cidr_range
+        private_ip_google_access = subnet.private_ip_google_access
       }
-    ] : []
-  }
+    ]
+  ])
+}
 
-  count = length(each.value)
+resource "google_compute_subnetwork" "subnet" {
+  count = length(local.subnets)
 
-  name                     = each.value[count.index].name
-  region                   = each.value[count.index].region
-  ip_cidr_range            = each.value[count.index].ip_cidr_range
-  private_ip_google_access = each.value[count.index].private_ip_google_access
-  network                  = google_compute_network.vpc[each.value[count.index].network_name].self_link
+  name          = local.subnets[count.index].name
+  region        = local.subnets[count.index].region
+  network       = google_compute_network.vpc[local.subnets[count.index].vpc_index].id
+  ip_cidr_range = local.subnets[count.index].cidr
+  private_ip_google_access = local.subnets[count.index].private_ip_google_access
 }

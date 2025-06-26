@@ -1,4 +1,4 @@
-resource "google_storage_bucket" "bucket-sandeep" {
+resource "google_storage_bucket" "bucket_sandeep" {
   count         = length(var.buckets)
   name          = var.buckets[count.index].name
   location      = var.buckets[count.index].location
@@ -19,12 +19,9 @@ resource "google_storage_bucket" "bucket-sandeep" {
   }
 }
 
-# resource "google_storage_bucket_object" "object-sandeep" {
-#     name = "iphone_logo"
-#     bucket = google_storage_bucket.bucket-sandeep[count.index].name
-#     source = "./modules/buckets/p2.jpg"
-# }
-
-# resource "random_id" "suffix" {
-#   byte_length = 4
-# }
+resource "google_storage_bucket_object" "object-sandeep" {
+    count  = length(var.buckets)
+    name = "iphone_logo"
+    bucket = google_storage_bucket.bucket_sandeep[count.index].name
+    source = "../modules/buckets/p2.jpg"
+}
