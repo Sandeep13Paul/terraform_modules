@@ -18,16 +18,16 @@ workflows:
       steps:
         - run: rm -rf .terraform .terraform.lock.hcl
         - run: |
-            terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -var-file="./project_1/terraform.tfvars" -out=tfplan
+            terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -var-file="project_1/terraform.tfvars" -out=tfplan
     apply:
       steps:
-        - run: terraform apply -var-file="./project_1/terraform.tfvars" tfplan
+        - run: terraform apply -var-file="project_1/terraform.tfvars" tfplan
   project_2_workflow:
     plan:
       steps:
         - run: rm -rf .terraform .terraform.lock.hcl
         - run: |
-            terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -var-file="./project_2/terraform.tfvars" -out=tfplan
+            terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -var-file="project_2/terraform.tfvars" -out=tfplan
     apply:
       steps:
-        - run: terraform apply -var-file="./project_2/terraform.tfvars" tfplan
+        - run: terraform apply -var-file="project_2/terraform.tfvars" tfplan
