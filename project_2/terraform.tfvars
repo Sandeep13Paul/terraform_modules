@@ -42,19 +42,19 @@ services = {
   vpc_network = {
     enabled = true
     networks = [
-      # {
-      #   name                    = "sandeep-vpc-3"
-      #   auto_create_subnetworks = false
-      #   description             = "VPC network for Sandeep's project"
-      #   subnets = [
-      #     {
-      #       name               = "sandeep-subnet-2"
-      #       region             = "asia-southeast1"
-      #       ip_cidr_range      = "10.10.0.0/24"
-      #       private_ip_google_access = true
-      #     }
-      #   ]
-      # },
+      {
+        name                    = "sandeep-vpc-3"
+        auto_create_subnetworks = false
+        description             = "VPC network for Sandeep's project"
+        subnets = [
+          {
+            name               = "sandeep-subnet-2"
+            region             = "asia-southeast1"
+            ip_cidr_range      = "10.10.0.0/24"
+            private_ip_google_access = true
+          }
+        ]
+      },
       {
         name                    = "sandeep-vpc-4"
         auto_create_subnetworks = true
