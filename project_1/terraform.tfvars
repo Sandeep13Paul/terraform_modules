@@ -66,12 +66,12 @@ services = {
   service_account = {
     enabled = true
     service_accounts = [
-      {
-        account_id        = "sandeep-service-account-1"
-        display_name = "Sandeep Service Account 1"
-        description = "Service account for Sandeep's project 1"
-        project_id = "sunlit-cab-463104-m6"
-      },
+      # {
+      #   account_id        = "sandeep-service-account-1"
+      #   display_name = "Sandeep Service Account 1"
+      #   description = "Service account for Sandeep's project 1"
+      #   project_id = "sunlit-cab-463104-m6"
+      # },
       {
         account_id        = "sandeep-service-account-2"
         display_name = "Sandeep Service Account 2"
