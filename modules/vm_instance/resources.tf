@@ -5,7 +5,7 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   machine_type = each.value.machine_type
   zone         = each.value.zone
   can_ip_forward = false
-  tags           = ["sandeep-tf", "ssh-enabled"]
+  tags           = ["sandeep-tf", "ssh-enabled", "http-server", "https-server"]
 
   boot_disk {
     initialize_params {
