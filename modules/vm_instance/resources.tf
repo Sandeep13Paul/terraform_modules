@@ -16,9 +16,19 @@ resource "google_compute_instance" "vm_sandeep_tf" {
 
   network_interface {
     network = "default"
+
+    access_config {
+    nat_ip       = google_compute_address.my_static_ip.address  # static external IP
+    network_tier = "STANDARD"                                   # or "PREMIUM"
+}
   }
 
   metadata = {
     ssh-keys = var.ssh_public_key
   }
+}
+
+resource "google_compute_address" "my_static_ip" {
+  name   = "vm-static-ip"
+  region = "asia-southeast1"
 }
