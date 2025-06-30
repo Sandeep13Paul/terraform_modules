@@ -5,7 +5,7 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   machine_type = each.value.machine_type
   zone         = each.value.zone
   can_ip_forward = false
-  tags           = ["sandeep-tf"]
+  tags           = ["sandeep-tf", "ssh-enabled"]
 
   boot_disk {
     initialize_params {
@@ -16,5 +16,9 @@ resource "google_compute_instance" "vm_sandeep_tf" {
 
   network_interface {
     network = "default"
+  }
+
+  metadata = {
+    ssh-keys = file("my_ssh_key.pub")
   }
 }
