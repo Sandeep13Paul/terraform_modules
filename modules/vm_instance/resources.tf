@@ -18,8 +18,8 @@ resource "google_compute_instance" "vm_sandeep_tf" {
     network = "default"
 
     access_config {
-    nat_ip       = google_compute_address.my_static_ip.address  # static external IP
-    network_tier = "STANDARD"                                   # or "PREMIUM"
+#     nat_ip       = google_compute_address.my_static_ip.address  # static external IP
+#     network_tier = "STANDARD"                                   # or "PREMIUM"
 }
   }
 
@@ -28,7 +28,7 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   }
 }
 
-resource "google_compute_address" "my_static_ip" {
-  name   = "vm-static-ip"
-  region = "asia-southeast1"
-}
+# resource "google_compute_address" "my_static_ip" {
+#   name   = "vm-static-ip"
+#   region = "asia-southeast1"
+# }
