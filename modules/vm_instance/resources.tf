@@ -19,6 +19,6 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   }
 
   metadata = {
-    ssh-keys = file("my_ssh_key.pub")
+    ssh-keys = file("./my_ssh_key.pub")
   }
 }
