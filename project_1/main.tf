@@ -33,6 +33,7 @@ module "vm_instance" {
   region             = var.region
   zone = var.zone
   GOOGLE_CREDENTIALS = var.GOOGLE_CREDENTIALS1
+  ssh_public_key = var.ssh_public_key
 }
 
 module "service_accounts" {
