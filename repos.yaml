@@ -7,12 +7,8 @@ repos:
     projects:
       - dir: project_1
         workflow: project_1_workflow
-        autoplan:
-          enabled: false
       - dir: project_2
         workflow: project_2_workflow
-        autoplan:
-          enabled: false
 
 workflows:
   project_1_workflow:
