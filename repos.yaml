@@ -4,13 +4,15 @@ repos:
   - id: https://github.com/Sandeep13Paul/terraform-tutorial
     allowed_overrides: [workflow]
     allow_custom_workflows: true
-    autoplan:
-      enabled: false
     projects:
       - dir: project_1
         workflow: project_1_workflow
+        autoplan:
+          enabled: false
       - dir: project_2
         workflow: project_2_workflow
+        autoplan:
+          enabled: false
 
 workflows:
   project_1_workflow:
