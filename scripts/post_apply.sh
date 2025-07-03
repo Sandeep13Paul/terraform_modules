@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 set -x
+SSH_KEY_PATH="/home/atlantis/.atlantis/ssh_key"
+chmod 600 "$SSH_KEY_PATH"
 
 echo "[Atlantis] Running post-apply script..."
 
@@ -17,9 +19,6 @@ cd ../ansible
 rm -f inventory.txt
 
 echo "[web]" > inventory.txt
-
-SSH_KEY_PATH="/home/atlantis/.atlantis/repos/Sandeep13Paul/ssh_key"
-# chmod 600 "$SSH_KEY_PATH"
 
 mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts
