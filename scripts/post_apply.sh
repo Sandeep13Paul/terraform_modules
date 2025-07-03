@@ -48,7 +48,7 @@ SSH_KEY_PATH="/home/atlantis/.atlantis/repos/Sandeep13Paul/ssh_key"
 chmod 600 "$SSH_KEY_PATH"
 
 for ip in $(jq -r '.[]' ../vm_ips.json); do
-  ssh-keygen -R "$ip" || true
+  [ -f ~/.ssh/known_hosts ] && ssh-keygen -R "$ip" || true
   echo "$ip ansible_user=sandeeppaul ansible_ssh_private_key_file=$SSH_KEY_PATH ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory.txt
 done
 
