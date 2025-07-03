@@ -31,7 +31,7 @@ set -x
 echo "[Atlantis] Running post-apply script..."
 
 apk update
-apk add ansible jq ssh python3
+apk add ansible jq openssh python3
 
 cd project_1
 
