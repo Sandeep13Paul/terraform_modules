@@ -22,3 +22,7 @@ variable "GOOGLE_CREDENTIALS1" {
 variable "services" {
   type = any
 }
+
+variable "ssh_public_key" {
+    type = string
+}

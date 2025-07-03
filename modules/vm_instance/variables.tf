@@ -19,6 +19,10 @@ variable "GOOGLE_CREDENTIALS" {
   sensitive   = true
 }
 
+variable "ssh_public_key" {
+    type = string
+}
+
 variable "instances" {
   type = list(object({
     name         = string
