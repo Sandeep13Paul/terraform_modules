@@ -6,7 +6,7 @@ services = {
     enabled = true
     instances = [
       {
-        name         = "vm-sandeep-1"
+        name         = "vm-sandeep-2"
         machine_type = "e2-medium"
         image        = "debian-cloud/debian-11"
         zone         = "asia-southeast1-b"
