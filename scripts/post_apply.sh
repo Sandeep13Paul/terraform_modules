@@ -19,7 +19,7 @@ rm -f inventory.txt
 echo "[web]" > inventory.txt
 
 SSH_KEY_PATH="/home/atlantis/.atlantis/repos/Sandeep13Paul/ssh_key"
-chmod 600 "$SSH_KEY_PATH"
+# chmod 600 "$SSH_KEY_PATH"
 
 mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts
