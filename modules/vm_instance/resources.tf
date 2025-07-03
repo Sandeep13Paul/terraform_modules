@@ -5,7 +5,7 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   machine_type = each.value.machine_type
   zone         = each.value.zone
   can_ip_forward = false
-  tags           = ["http-server", "https-server", "allow-ssh"]
+  tags           = ["http-server", "https-server", "allow-ssh", "ssh"]
 
   boot_disk {
     initialize_params {
@@ -35,5 +35,5 @@ resource "google_compute_firewall" "allow_ssh" {
   }
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["http-server", "https-server", "allow-ssh"]
+  target_tags   = ["ssh"]
 }
