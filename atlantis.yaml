@@ -57,7 +57,7 @@ workflows:
         - run: terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var-file="terraform.tfvars" -out=tfplan
     apply:
       steps:
-        - run: terraform apply -var-file="terraform.tfvars" tfplan
+        - run: terraform apply tfplan
         - run: ../scripts/post_apply.sh
 
   project_2_workflow:
@@ -68,4 +68,4 @@ workflows:
         - run: terraform plan -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -var-file="terraform.tfvars" -out=tfplan
     apply:
       steps:
-        - run: terraform apply -var-file="terraform.tfvars" tfplan
+        - run: terraform apply tfplan
