@@ -54,11 +54,7 @@ workflows:
       steps:
         - run: rm -rf .terraform .terraform.lock.hcl
         - run: terraform init -input=false -upgrade
-        - run: |
-            terraform plan \
-              -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" \
-              -var-file="project_1/terraform.tfvars" \
-              -out=tfplan
+        - run: terraform plan -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" -var-file="project_1/terraform.tfvars" -out=tfplan
     apply:
       steps:
         - run: terraform apply -var-file="project_1/terraform.tfvars" tfplan
@@ -69,11 +65,7 @@ workflows:
       steps:
         - run: rm -rf .terraform .terraform.lock.hcl
         - run: terraform init -input=false -upgrade
-        - run: |
-            terraform plan \
-              -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" \
-              -var-file="project_2/terraform.tfvars" \
-              -out=tfplan
+        - run: terraform plan -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" -var-file="project_2/terraform.tfvars" -out=tfplan
     apply:
       steps:
         - run: terraform apply -var-file="project_2/terraform.tfvars" tfplan
