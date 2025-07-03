@@ -1,6 +1,6 @@
 ---
 - name: Configure GCP VM
-  hosts: gcp-vms
+  hosts: web
   become: true
   tasks:
     - name: Create folder
