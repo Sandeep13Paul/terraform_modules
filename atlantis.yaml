@@ -1,12 +1,48 @@
+# version: 3
+
+# projects:
+#   - name: project_1
+#     dir: project_1
+#     workflow: project_1_workflow
+
+#   - name: project_2
+#     dir: project_2
+#     workflow: project_2_workflow
+
+# workflows:
+#   project_1_workflow:
+#     plan:
+#       steps:
+#         - run: rm -rf .terraform .terraform.lock.hcl
+#         - run: |
+#             terraform plan \
+#               -var="GOOGLE_CREDENTIALS1=$TF_VAR_GOOGLE_CREDENTIALS1" \
+#               -var-file="project_1/terraform.tfvars" \
+#               -out=tfplan
+#     apply:
+#       steps:
+#         - run: terraform apply -var-file="project_1/terraform.tfvars" tfplan
+#         - run: ../scripts/post_apply.sh
+
+#   project_2_workflow:
+#     plan:
+#       steps:
+#         - run: rm -rf .terraform .terraform.lock.hcl
+#         - run: |
+#             terraform plan \
+#               -var="GOOGLE_CREDENTIALS2=$TF_VAR_GOOGLE_CREDENTIALS2" \
+#               -var-file="project_2/terraform.tfvars" \
+#               -out=tfplan
+#     apply:
+#       steps:
+#         - run: terraform apply -var-file="project_2/terraform.tfvars" tfplan
+
 version: 3
 
 projects:
-  - name: project_1
-    dir: project_1
+  - dir: project_1
     workflow: project_1_workflow
-
-  - name: project_2
-    dir: project_2
+  - dir: project_2
     workflow: project_2_workflow
 
 workflows:
@@ -22,7 +58,7 @@ workflows:
     apply:
       steps:
         - run: terraform apply -var-file="project_1/terraform.tfvars" tfplan
-        - run: ../scripts/post_apply.sh
+        - run: ./scripts/post_apply.sh
 
   project_2_workflow:
     plan:
