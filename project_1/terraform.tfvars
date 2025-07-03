@@ -11,12 +11,12 @@ services = {
         image        = "debian-cloud/debian-11"
         zone         = "asia-southeast1-b"
       },
-      # {
-      #   name         = "vm-sandeep-2"
-      #   machine_type = "e2-small"
-      #   image        = "debian-cloud/debian-11"
-      #   zone         = "asia-southeast1-a"
-      # }
+      {
+        name         = "vm-sandeep-1"
+        machine_type = "e2-small"
+        image        = "debian-cloud/debian-11"
+        zone         = "asia-southeast1-a"
+      }
     ]
   }
 
