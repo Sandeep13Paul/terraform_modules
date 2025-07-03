@@ -14,7 +14,7 @@ rm -f inventory.txt
 echo "[web]" > inventory.txt
 
 for ip in $(jq -r '.[]' /vm_ips.json); do
-  echo "$ip ansible_ssh_private_key_file='./ssh_key'" >> inventory.txt
+  echo "$ip ansible_ssh_private_key_file='../../../ssh_key'" >> inventory.txt
 done
 
 echo "[Atlantis] Generated inventory:"
