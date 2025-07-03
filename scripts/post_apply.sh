@@ -2,7 +2,7 @@
 set -e
 set -x
 SSH_KEY_PATH="/home/atlantis/.atlantis/ssh_key"
-chmod 600 "$SSH_KEY_PATH"
+# chmod 600 "$SSH_KEY_PATH"
 
 echo "[Atlantis] Running post-apply script..."
 
