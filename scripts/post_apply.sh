@@ -30,6 +30,9 @@ set -x
 
 echo "[Atlantis] Running post-apply script..."
 
+apk update
+apk add ansible jq ssh python3
+
 cd project_1
 
 echo "[Atlantis] Fetching VM IPs from Terraform output..."
