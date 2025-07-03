@@ -7,7 +7,7 @@ echo "[Atlantis] Running post-apply script..."
 # apk update
 # apk add ansible jq openssh python3
 
-cd project_1
+# cd project_1
 
 echo "[Atlantis] Fetching VM IPs from Terraform output..."
 terraform output -json vm_public_ips > ../vm_ips.json
