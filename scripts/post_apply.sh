@@ -25,6 +25,17 @@ mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts
 
 for ip in $(jq -r '.[]' ../vm_ips.json); do
+  echo "[Atlantis] Waiting for SSH to become available on $ip..."
+  for i in {1..12}; do  # Wait up to 60 seconds (12 * 5s)
+    if ssh -i "$SSH_KEY_PATH" -o StrictHostKeyChecking=no -o ConnectTimeout=5 sandeeppaul@$ip "echo SSH ready" >/dev/null 2>&1; then
+      echo "[Atlantis] SSH is ready on $ip"
+      break
+    else
+      echo "[Atlantis] SSH not ready on $ip, retrying in 5 seconds..."
+      sleep 5
+    fi
+  done
+
   ssh-keygen -R "$ip" || true
   echo "$ip ansible_user=sandeeppaul ansible_ssh_private_key_file=\"$SSH_KEY_PATH\" ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory.txt
 done
