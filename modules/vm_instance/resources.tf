@@ -5,7 +5,7 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   machine_type = each.value.machine_type
   zone         = each.value.zone
   can_ip_forward = false
-  tags           = ["http-server", "https-server", "allow-ssh"]
+  tags           = ["http-server", "https-server", "allow-ssh", "ssh"]
 
   boot_disk {
     initialize_params {
@@ -23,4 +23,17 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   metadata = {
     ssh-keys = base64decode(var.ssh_public_key)
   }
+}
+
+resource "google_compute_firewall" "allow_ssh" {
+  name    = "allow-ssh"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["ssh"]
 }
