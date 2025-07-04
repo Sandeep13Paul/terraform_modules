@@ -21,7 +21,7 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   }
 
   metadata = {
-    ssh-keys = base64decode(var.ssh_public_key)
+    ssh-keys = "${each.value.username}:${base64decode(var.ssh_public_key)}"
   }
 }
 
