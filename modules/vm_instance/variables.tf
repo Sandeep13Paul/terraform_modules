@@ -29,5 +29,6 @@ variable "instances" {
     machine_type = string
     image        = string
     zone         = string
+    username = string
   }))
 }
