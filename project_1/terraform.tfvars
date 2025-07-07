@@ -10,7 +10,7 @@ services = {
       {
         name         = "vm-sandeep-2"
         machine_type = "e2-medium"
-        image        = "debian-cloud/debian-11"
+        image        = "rocky-linux-9-v20250611"
         zone         = "asia-southeast1-b"
         username = "sandeeppaul"
       },
