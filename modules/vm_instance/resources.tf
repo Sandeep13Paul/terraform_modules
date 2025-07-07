@@ -1,3 +1,11 @@
+resource "google_compute_disk" "extra_disk" {
+  for_each = {for vm in var.instances : vm.name => vm}
+  name = "${each.key}-extra-disk"
+  type = "pd-standard"
+  zone = each.value.zone
+  size = 50
+}
+
 resource "google_compute_instance" "vm_sandeep_tf" {
   for_each     = { for vm in var.instances : vm.name => vm }
 
@@ -14,6 +22,12 @@ resource "google_compute_instance" "vm_sandeep_tf" {
     }
   }
 
+  attached_disk {
+    source      = google_compute_disk.extra_disk[each.key].self_link
+    device_name = "extra-disk"
+    mode        = "READ_WRITE"
+  }
+
   network_interface {
     network = "default"
 
@@ -21,7 +35,7 @@ resource "google_compute_instance" "vm_sandeep_tf" {
   }
 
   metadata = {
-    ssh-keys = base64decode(var.ssh_public_key)
+    ssh-keys = "${each.value.username}:${base64decode(var.ssh_public_key)}"
   }
 }
 

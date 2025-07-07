@@ -1,6 +1,8 @@
 project_id = "sunlit-cab-463104-m6"  # my-second-project-463910  sunlit-cab-463104-m6
-region = "us-central1"
-zone = "us-central1-a"
+# region = "us-central1"
+# zone = "us-central1-a"
+region = "asia-southeast1"
+zone = "asia-southeast1-a"
 services = {
   vm_instance = {
     enabled = true
@@ -8,8 +10,9 @@ services = {
       # {
       #   name         = "vm-sandeep-2"
       #   machine_type = "e2-medium"
-      #   image        = "debian-cloud/debian-11"
+      #   image        = "rocky-linux-9-v20250611"
       #   zone         = "asia-southeast1-b"
+      #   username = "sandeeppaul"
       # },
       # {
       #   name         = "vm-sandeep-1"
